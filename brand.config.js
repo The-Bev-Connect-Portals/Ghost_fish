@@ -241,19 +241,16 @@ export const BRAND = {
   //  pass degrades quietly instead of showing empty categories — check
   //  the live grid, don't assume.
   filters: [
-    //  ⚠ These tags are on the DEMO products only. Ghostfish's own store has
-    //  no tags at all, and the Brew Hunters copies carry bucket tags
-    //  (bh:*, portal:ghostfish), not style tags. Add these flat style tags
-    //  to the Brew Hunters products before going live or every filter but
-    //  "All Beer" hides itself.
+    //  Matched to the tags actually on the Brew Hunters products (Title
+    //  Case, exact match — tag comparison is case-sensitive), verified
+    //  live 2026-10-13. Lagers carry both "Lager" and "Pale Lager".
     { label: "All Beer",   tag: null },
-    { label: "IPA",        tag: "ipa" },
-    { label: "Pale Ale",   tag: "pale-ale" },
-    { label: "Lager",      tag: "lager" },
-    { label: "Stout",      tag: "stout" },
-    { label: "Belgian",    tag: "belgian" },
-    { label: "Sour",       tag: "sour" },
-    { label: "Seasonal",   tag: "seasonal" },
+    { label: "IPA",        tag: "IPA" },
+    { label: "Pale Ale",   tag: "Pale Ale" },
+    { label: "Lager",      tag: "Lager" },
+    { label: "Stout",      tag: "Stout" },
+    { label: "Belgian",    tag: "Belgian White Ale" },
+    { label: "Sour",       tag: "Sour Ale" },
   ],
 
   // ── Shopify ───────────────────────────────────────────────
@@ -279,7 +276,17 @@ export const BRAND = {
   // Shopify order and follow the listed ones — a newly tagged product always
   // shows up, it just lands at the end until you add it here.
   // Leave as [] to use Shopify's own collection sort.
-  productOrder: ["it-came-from-the-haze-hazy-ipa", "kick-step-ipa", "grapefruit-ipa", "peak-buster-dipa", "vanishing-point-pale-ale", "meteor-shower-pale-lager", "watchstander-stout", "shrouded-summit-belgian-white-ale", "gosefish", "lunar-harvest-pumpkin-ale"],
+  productOrder: [
+    "ghostfish-it-came-from-the-haze-hazy-ipa",
+    "ghostfish-kick-step-ipa",
+    "ghostfish-grapefruit-ipa",
+    "ghostfish-peak-buster-double-ipa",
+    "ghostfish-vanishing-point-pale-ale",
+    "ghostfish-meteor-shower-pale-lager",
+    "ghostfish-watchstander-stout",
+    "ghostfish-shrouded-summit-belgian-white-ale",
+    "ghostfish-gosefish-hibiscus-cranberry-gose",
+  ],
 
   collectionHandle: "ghostfish-brewing-company",   // Brew Hunters smart collection, TAG EQUALS portal:ghostfish (created 2026-09-14)
 
@@ -289,7 +296,7 @@ export const BRAND = {
   //  Safe to ship client-side: read-only, scoped to public product data.
   //  Give every brand its own so it can be rotated independently.
   //  NEVER put an Admin API token here.
-  storefrontToken: "REPLACE",              // ‹REPLACE› public token from a "Ghostfish" Headless channel on Brew Hunters — not created yet
+  storefrontToken: "13d42dd95292dfad5aab138758a186a5",   // Brew Hunters "Ghost Fish" headless channel #399867, verified 2026-10-13
   apiVersion: "2026-04",
 
   //  Written onto the Shopify cart as an attribute. This is what the
@@ -316,20 +323,8 @@ export const BRAND = {
   //
   //  Going live: import the products, publish them to this brand's
   //  Headless storefront, paste the token above, set demoProducts: [].
-  demoProducts: [
-    //  Snapshot of ghostfish-beer.myshopify.com, 2026-10-13: prices, pack sizes,
-    //  sold-out flags and copy are THEIR live listings, not ours. ABV / IBU /
-    //  awards appear only where their own copy states them. The Beer of the
-    //  Month subscription is left out on purpose (portals don't do subscriptions).
-    {"id": "ghostfish-it-came-from-the-haze-hazy-ipa", "title": "Ghostfish - It Came From the Haze Hazy IPA", "handle": "it-came-from-the-haze-hazy-ipa", "tags": ["ipa", "hazy-ipa"], "description": "Our rotating Hazy IPA series — each batch evolves with a different blend of hops. Hazy, juicy and expressive, with strong notes of pineapple and papaya, full-bodied, with resinous, dank, grassy notes on the back end.", "specs": ["4-pack of 16oz cans", "6% ABV", "47 IBU", "2023 Great American Beer Festival® Gold Medal, Gluten Free Beer"], "inStock": true, "image": "/assets/products/it-came-from-the-haze-hazy-ipa.jpg", "alt": "It Came From the Haze Hazy IPA, 4-pack of 16oz cans", "price": {"amount": "21.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-kick-step-ipa", "title": "Ghostfish - Kick Step IPA", "handle": "kick-step-ipa", "tags": ["ipa"], "description": "A classic NW-style IPA, golden in color with complex hop aromas of citrus, mango and pine. Sturdy, yet light bodied with a dry finish. A project beer with The Mountaineers.", "specs": ["4-pack of 12oz cans"], "inStock": true, "image": "/assets/products/kick-step-ipa.jpg", "alt": "Kick Step IPA, 4-pack of 12oz cans", "price": {"amount": "17.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-grapefruit-ipa", "title": "Ghostfish - Grapefruit IPA", "handle": "grapefruit-ipa", "tags": ["ipa"], "description": "Brewed with grapefruit peel and an experimental hop codenamed “Experimental Grapefruit” — a serious citrus bomb. Lively and bright, bracingly bitter, and eminently refreshing.", "specs": ["4-pack of 12oz cans"], "inStock": true, "image": "/assets/products/grapefruit-ipa.jpg", "alt": "Grapefruit IPA, 4-pack of 12oz cans", "price": {"amount": "17.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-peak-buster-dipa", "title": "Ghostfish - Peak Buster DIPA", "handle": "peak-buster-dipa", "tags": ["ipa", "double-ipa"], "description": "A mountain of Summit, Azacca, Centennial and Eureka hops on a heavy foundation of malted rice, millet and buckwheat. Over-the-top passionfruit, mango and pine.", "specs": ["4-pack of 16oz cans"], "inStock": true, "image": "/assets/products/peak-buster-dipa.jpg", "alt": "Peak Buster DIPA, 4-pack of 16oz cans", "price": {"amount": "21.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-vanishing-point-pale-ale", "title": "Ghostfish - Vanishing Point Pale Ale", "handle": "vanishing-point-pale-ale", "tags": ["pale-ale"], "description": "A classic American pale ale built on artisan gluten-free millet and rice malts and four varieties of Washington-grown hops.", "specs": ["4-pack of 12oz cans"], "inStock": true, "image": "/assets/products/vanishing-point-pale-ale.jpg", "alt": "Vanishing Point Pale Ale, 4-pack of 12oz cans", "price": {"amount": "17.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-meteor-shower-pale-lager", "title": "Ghostfish - Meteor Shower Pale Lager", "handle": "meteor-shower-pale-lager", "tags": ["lager"], "description": "Sparkling, crisp and highly refreshing. Malted millet and California-grown brown rice, kissed by Noble German Perle hops for a light bitterness and a floral aroma.", "specs": ["4-pack of 12oz cans"], "inStock": false, "image": "/assets/products/meteor-shower-pale-lager.jpg", "alt": "Meteor Shower Pale Lager, 4-pack of 12oz cans", "price": {"amount": "17.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-watchstander-stout", "title": "Ghostfish - Watchstander Stout", "handle": "watchstander-stout", "tags": ["stout"], "description": "Dark roasts of malted millet, buckwheat and brown rice bring dark chocolate, toasted marshmallow and coffee. Gluten free rolled oats give it a fluffy mouthfeel. Pair with chili, stew, or cookies by the fire.", "specs": ["4-pack of 16oz cans", "2015 Great American Beer Festival Gold Medal, Gluten Free Beer"], "inStock": true, "image": "/assets/products/watchstander-stout.jpg", "alt": "Watchstander Stout, 4-pack of 16oz cans", "price": {"amount": "21.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-shrouded-summit-belgian-white-ale", "title": "Ghostfish - Shrouded Summit Belgian White Ale", "handle": "shrouded-summit-belgian-white-ale", "tags": ["belgian"], "description": "A proper witbier without wheat or barley. Hazy golden body, a snowy head, juniper and citrus, and classic Belgian-style aromatics of banana, clove and sweet orange.", "specs": ["4-pack of 12oz cans"], "inStock": false, "image": "/assets/products/shrouded-summit-belgian-white-ale.jpg", "alt": "Shrouded Summit Belgian White Ale, 4-pack of 12oz cans", "price": {"amount": "17.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-gosefish", "title": "Ghostfish - Gosefish", "handle": "gosefish", "tags": ["sour", "seasonal"], "description": "A vivid pink, tart, salty, refreshing take on the traditional German sour ale, brewed with cranberry, hibiscus and coriander.", "specs": ["4-pack of 16oz cans", "5.0% ABV", "8 IBU"], "inStock": true, "image": "/assets/products/gosefish.jpg", "alt": "Gosefish, 4-pack of 16oz cans", "price": {"amount": "19.99", "currencyCode": "USD"}},
-    {"id": "ghostfish-lunar-harvest-pumpkin-ale", "title": "Ghostfish - Lunar Harvest Pumpkin Ale", "handle": "lunar-harvest-pumpkin-ale", "tags": ["seasonal"], "description": "Our annual Belgian-style pumpkin ale: fall spices and pumpkin purée blended with the fruity esters of Belgian yeast. Warm and refreshing at once.", "specs": ["4-pack of 16oz cans", "5.0% ABV", "20 IBU", "Silver Medal, Pastry/Dessert Beer — 2021 Sip Magazine Best of the Northwest"], "inStock": false, "image": "/assets/products/lunar-harvest-pumpkin-ale.jpg", "alt": "Lunar Harvest Pumpkin Ale, 4-pack of 16oz cans", "price": {"amount": "21.99", "currencyCode": "USD"}},
-  ],
+  //  Demo snapshot of ghostfish-beer.myshopify.com was removed at go-live
+  //  (2026-10-13) — it is in git history (commit 3b3177a) and the images
+  //  are kept in assets/products/ as an archive of their old store.
+  demoProducts: [],
 };

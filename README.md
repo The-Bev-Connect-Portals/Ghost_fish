@@ -5,25 +5,19 @@ Built from `portal-template` on 2026-10-13. Catalog backend: **Brew Hunters**
 (`fbxhgf-1f.myshopify.com`), collection `ghostfish-brewing-company`
 (smart, `TAG EQUALS portal:ghostfish`). Slug / cart attribute: `ghostfish`.
 
-## Status: DEMO MODE
-`brand.config.js` → `demoProducts` holds a snapshot of the 10 beers on Ghostfish's
-own store (ghostfish-beer.myshopify.com) with their prices, sold-out flags and
-copy. Checkout is disabled and says so. Product images live in `assets/products/`.
+## Status: LIVE against Brew Hunters (2026-10-13)
+Storefront token from the "Ghost Fish" Headless channel. 9 products in
+`ghostfish-brewing-company`, all published to the channel; cartCreate verified
+with `portal = ghostfish`. `assets/products/` keeps the images from Ghostfish's
+old Shopify store as an archive.
 
-## To go live
-1. Brew Hunters: create a **Ghostfish** Headless channel → copy the public token
-   into `storefrontToken`.
-2. Publish the Ghostfish products **and** the `ghostfish-brewing-company`
-   collection to that channel (the collection itself has to be published too, or
-   `collectionByHandle` returns null).
-3. Add flat style tags (`ipa`, `pale-ale`, `lager`, `stout`, `belgian`, `sour`,
-   `seasonal`) to those products — the filters key on them.
-4. Inventory policy CONTINUE on every variant.
-5. Set `demoProducts: []`.
-6. Netlify: publish dir `.`, no build command, **form detection on**, notification
-   email set for the `ghostfish-help` form.
-7. Shopify Flow rule on cart attribute `portal = ghostfish`; verify with a test order.
-8. At launch: drop `robots.txt` **and** the `X-Robots-Tag` line in `netlify.toml`.
+## Still to do
+1. Netlify: publish dir `.`, no build command, **form detection on**, notification
+   email for the `ghostfish-help` form.
+2. Yuko rule on Brew Hunters: scope Cart, min 2, limited to the
+   `ghostfish-brewing-company` collection (the portal only gates its own button).
+3. Shopify Flow rule on cart attribute `portal = ghostfish`; verify with a test order.
+4. At launch: drop `robots.txt` **and** the `X-Robots-Tag` line in `netlify.toml`.
 
 ## Open
 - High-res / vector logo from Ghostfish (current `assets/logo.png` is their 260px web header).
