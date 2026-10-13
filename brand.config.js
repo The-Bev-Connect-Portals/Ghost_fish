@@ -175,11 +175,19 @@ export const BRAND = {
   //    Go-To Gifting from the same store; an unscoped rule puts a
   //    minimum on every gift basket order on the account.
   minOrder: {
-    active: false,
+    //  James, 2026-10-13: Ghostfish always has a two-pack minimum — any two
+    //  4-packs, mixed or matched. Same rule as Topa Topa and Fig Mountain.
+    //  The portal only disables its own checkout button; real enforcement is
+    //  a Yuko rule on Brew Hunters, scope Cart, min 2, limited to the
+    //  ghostfish-brewing-company collection. Unscoped, it would hit every
+    //  Brew Hunters order.
+    //  If a variety pack or case is ever added, the "4-packs" copy below
+    //  goes stale — switch it to unit-neutral wording.
+    active: true,
     qty: 2,
     scope: "cart",
-    heading: "2-item minimum",
-    line: "Orders start at two items. Mix and match anything you like.",
+    heading: "2-pack minimum",
+    line: "Orders start at two 4-packs. Mix and match any beers you like.",
   },
 
   // ── Promo ticker ──────────────────────────────────────────
