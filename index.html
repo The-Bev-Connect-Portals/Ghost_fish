@@ -10,6 +10,7 @@
 <title>Shop</title><!-- app.js rewrites this from BRAND.name -->
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="/assets/club.css">
 </head>
 <body>
 
@@ -67,6 +68,28 @@
     </nav>
     <section id="grid" aria-live="polite" aria-busy="true"></section>
   </div>
+
+  <!-- Pick-6 Club. Painted by assets/club.js from BRAND.club; removes
+       itself when club.active is false (unless ?club=preview). -->
+  <section class="club" id="club" aria-labelledby="club-heading" hidden>
+    <p class="club__eyebrow" id="club-name"></p>
+    <h2 class="club__heading" id="club-heading"></h2>
+    <p class="club__intro" id="club-intro"></p>
+    <div class="club__layout">
+      <ul class="club__list" id="club-list"></ul>
+      <aside class="club__box" aria-label="Your box">
+        <p class="club__price" id="club-price"></p>
+        <p class="club__count" id="club-count" aria-live="polite"></p>
+        <div class="club__bar" id="club-bar" aria-hidden="true"></div>
+        <ul class="club__picks" id="club-picks"></ul>
+        <button class="club__clear" id="club-clear" type="button">Clear picks</button>
+        <p class="club__terms" id="club-terms"></p>
+        <label class="club__consent"><input type="checkbox" id="club-consent"><span id="club-consent-label"></span></label>
+        <button class="club__go" id="club-go" type="button" disabled>Pick 6 more</button>
+        <p class="club__error" id="club-error" role="alert" hidden></p>
+      </aside>
+    </div>
+  </section>
 </main>
 
 <footer class="footer">
@@ -179,5 +202,6 @@
 </div>
 
 <script type="module" src="/assets/app.js"></script>
+<script type="module" src="/assets/club.js"></script>
 </body>
 </html>

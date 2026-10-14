@@ -232,7 +232,7 @@ export const BRAND = {
 
   // Shown if the catalog fails to load. Go-To Gifting is the seller of
   // record, so this is our contact unless the client wants theirs.
-  supportEmail: "james@gotogifting.com",
+  supportEmail: "james@thebevconnect.com",
   supportPhone: "",
 
   // ── Filters ───────────────────────────────────────────────
@@ -323,6 +323,40 @@ export const BRAND = {
   //
   //  Going live: import the products, publish them to this brand's
   //  Headless storefront, paste the token above, set demoProducts: [].
+  // ── Pick-6 Club (build-your-own monthly box) ──────────────
+  //  Rendered by assets/club.js. Shopper picks `size` 4-packs (doubles
+  //  allowed); checkout is ONE line: the club product at a flat price,
+  //  on its monthly selling plan, with the picks written as line
+  //  attributes ("Pick 1" … "Pick 6"). The warehouse packs from those
+  //  attributes; renewals repeat them.
+  //
+  //  Shopify side (Brew Hunters), required before active:true:
+  //   1. Product `productHandle`, flat price, NOT tagged portal:ghostfish
+  //      (so it stays out of the grid), published to the Ghost Fish channel.
+  //   2. Shopify Subscriptions app → monthly plan on that product,
+  //      "sell as subscription only".
+  //  Until both exist the section only renders with ?club=preview, and its
+  //  button stays off. Billing, renewal, skip and cancel live in Shopify.
+  //
+  //  Renewals never pass through checkout: age gate and state screening
+  //  run on the FIRST order only. Attorney sign-off pending.
+  club: {
+    active: false,
+    productHandle: "ghostfish-pick-6-club",
+    size: 6,
+    price: 99.95,                 // display only — Shopify's price is what's charged
+    name: "Pick-6 Club",
+    heading: "Build your own monthly box",
+    intro: "Pick any six 4-packs — doubles welcome — and we'll ship the same box every month.",
+    //  CA auto-renewal law: terms must be clear and next to the button,
+    //  and the shopper has to agree to them affirmatively.
+    terms: "$99.95 a month plus shipping and the $5.99 adult-signature fee, " +
+           "charged at checkout and again every month until you cancel. " +
+           "Skip or cancel anytime from your account, or email james@thebevconnect.com. " +
+           "If a beer you picked is sold out when your box ships, we'll send a similar style instead.",
+    consent: "I understand this box renews and is charged every month until I cancel.",
+  },
+
   //  Demo snapshot of ghostfish-beer.myshopify.com was removed at go-live
   //  (2026-10-13) — it is in git history (commit 3b3177a) and the images
   //  are kept in assets/products/ as an archive of their old store.
