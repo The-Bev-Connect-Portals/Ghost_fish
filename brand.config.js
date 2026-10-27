@@ -277,6 +277,9 @@ export const BRAND = {
   // shows up, it just lands at the end until you add it here.
   // Leave as [] to use Shopify's own collection sort.
   productOrder: [
+    //  Fall seasonal (Sept–Oct), leads the grid while it's in season.
+    //  Move it down or drop it when the season ends.
+    "ghostfish-lunar-harvest-pumpkin-ale",
     "ghostfish-it-came-from-the-haze-hazy-ipa",
     "ghostfish-kick-step-ipa",
     "ghostfish-grapefruit-ipa",
